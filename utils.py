@@ -33,12 +33,11 @@ def get_digit(number: int, i: int) -> int:
 
 
 def reverse_number(n: int) -> int:
-    n_cpy = n
     reverse = 0
-    while n_cpy != 0:
-        digit = n_cpy % 10
+    while n != 0:
+        digit = n % 10
         reverse =+ reverse * 10 + digit
-        n_cpy //= 10
+        n //= 10
     return reverse
 
 
@@ -50,8 +49,14 @@ def is_palindrome(n: int) -> bool:
     return n == reverse_number(n)
 
 
+def sum_digits(n: int) -> int:
+    res = 0
+    while n != 0:
+        res += n % 10
+        n //= 10
+    return res
+
+
 if __name__ == '__main__':
-    print(reverse_number(23456))
-    print(reverse_number_str(23456))
-    print(timeit.timeit('reverse_number(23456)', globals=globals(), number=100000))
-    print(timeit.timeit('reverse_number_str(23456)', globals=globals(), number=100000))
+    print(sum_digits(23456))
+    print(timeit.timeit('sum_digits(23456)', globals=globals(), number=100000))
