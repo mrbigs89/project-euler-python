@@ -1,4 +1,5 @@
 import math
+import timeit
 from functools import lru_cache
 from itertools import chain, combinations
 
@@ -27,5 +28,30 @@ def n_digits(n: int) -> int:
     return int(math.log10(n)) + 1
 
 
-def get_digit(number: int, n: int) -> int:
-    return number // 10 ** n % 10
+def get_digit(number: int, i: int) -> int:
+    return number // 10 ** i % 10
+
+
+def reverse_number(n: int) -> int:
+    n_cpy = n
+    reverse = 0
+    while n_cpy != 0:
+        digit = n_cpy % 10
+        reverse =+ reverse * 10 + digit
+        n_cpy //= 10
+    return reverse
+
+
+def reverse_number_str(n: int) -> int:
+    return int(''.join(reversed(str(n))))
+
+
+def is_palindrome(n: int) -> bool:
+    return n == reverse_number(n)
+
+
+if __name__ == '__main__':
+    print(reverse_number(23456))
+    print(reverse_number_str(23456))
+    print(timeit.timeit('reverse_number(23456)', globals=globals(), number=100000))
+    print(timeit.timeit('reverse_number_str(23456)', globals=globals(), number=100000))
