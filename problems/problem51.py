@@ -11,25 +11,10 @@ from sympy import nextprime
 from utils import cached_isprime, nonempty_powerset, n_digits, get_digit
 
 
-def replace_parts(n: int, sorted_positions: List[int]) -> List[int]:  # O(log(n))
-    base = n
-    for position in sorted_positions:
-        base = reset_ith_digit(base, position)
-    ones_positions = sum(10 ** position for position in sorted_positions)
-    min_replacement = 1 if sorted_positions[-1] == n_digits(n) - 1 else 0
-    return [base + ones_positions * i for i in range(min_replacement, 10)]
-
-
 def reset_ith_digit(base: int, position: int) -> int:  # O(1)
     large_part = base // 10 ** (position + 1) * 10 ** (position + 1)
     small_part = base % 10 ** position
     return large_part + small_part
-
-
-def positions_with_same_digit(n: int) -> List[int]:
-    result = []
-    for position in range(n_digits(n)):
-        result[position] = []
 
 
 def solve(num_of_primes: int = 8) -> int:
