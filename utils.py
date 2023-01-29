@@ -2,6 +2,7 @@ import math
 import timeit
 from functools import lru_cache
 from itertools import chain, combinations
+from typing import List
 
 from sympy import isprime
 
@@ -28,7 +29,7 @@ def n_digits(n: int) -> int:
     return int(math.log10(n)) + 1
 
 
-def get_digit(number: int, i: int) -> int:
+def get_digit_at_index(number: int, i: int) -> int:
     return number // 10 ** i % 10
 
 
@@ -49,6 +50,14 @@ def is_palindrome(n: int) -> bool:
     return n == reverse_number(n)
 
 
+def get_digits(n: int) -> List[int]:
+    res = []
+    while n != 0:
+        res.append(n % 10)
+        n //= 10
+    return res
+
+
 def sum_digits(n: int) -> int:
     res = 0
     while n != 0:
@@ -58,5 +67,5 @@ def sum_digits(n: int) -> int:
 
 
 if __name__ == '__main__':
-    print(sum_digits(23456))
-    print(timeit.timeit('sum_digits(23456)', globals=globals(), number=100000))
+    print(get_digits(23456))
+    # print(timeit.timeit('sum_digits(23456)', globals=globals(), number=100000))

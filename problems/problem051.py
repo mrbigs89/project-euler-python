@@ -8,7 +8,7 @@ from typing import List
 
 from sympy import nextprime
 
-from utils import cached_isprime, nonempty_powerset, n_digits, get_digit
+from utils import cached_isprime, nonempty_powerset, n_digits, get_digit_at_index
 
 
 def reset_ith_digit(base: int, position: int) -> int:  # O(1)
@@ -26,11 +26,11 @@ def solve(num_of_primes: int = 8) -> int:
         while remaining_positions:
             reference_position = remaining_positions[0]
             remaining_positions = remaining_positions[1:]
-            reference_digit = get_digit(n, reference_position)
+            reference_digit = get_digit_at_index(n, reference_position)
             base = reset_ith_digit(n, reference_position)
             replaced_positions = [reference_position]
             for i in remaining_positions:
-                if get_digit(n, i) == reference_digit:
+                if get_digit_at_index(n, i) == reference_digit:
                     replaced_positions.append(i)
                     remaining_positions.remove(i)
                     base = reset_ith_digit(base, i)
