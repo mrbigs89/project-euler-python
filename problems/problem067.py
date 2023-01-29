@@ -17,8 +17,9 @@
 from pathlib import Path
 from typing import List
 
+from utils import BASE_INPUT_PATH
 
-INPUT_PATH = Path(__file__).resolve().parent.parent / 'inputs' / 'problem067_triangle.txt'
+INPUT_PATH = BASE_INPUT_PATH / 'problem067_triangle'
 
 
 def read_input(path: Path) -> List[List[int]]:

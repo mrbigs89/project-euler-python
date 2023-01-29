@@ -1,10 +1,12 @@
 import math
-import timeit
 from functools import lru_cache
 from itertools import chain, combinations
+from pathlib import Path
 from typing import List
 
 from sympy import isprime
+
+BASE_INPUT_PATH = Path(__file__).resolve().parent / 'inputs'
 
 
 @lru_cache(maxsize=1000000)
@@ -37,7 +39,7 @@ def reverse_number(n: int) -> int:
     reverse = 0
     while n != 0:
         digit = n % 10
-        reverse =+ reverse * 10 + digit
+        reverse = + reverse * 10 + digit
         n //= 10
     return reverse
 

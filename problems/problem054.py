@@ -36,8 +36,10 @@ from enum import IntEnum, auto, StrEnum
 from pathlib import Path
 from typing import Optional, List, Tuple
 
-INPUT_PATH = Path(__file__).resolve().parent.parent / 'inputs' / 'problem054-poker'
-TEST_INPUT_PATH = Path(__file__).resolve().parent.parent / 'inputs' / 'problem054-poker-test'
+from utils import BASE_INPUT_PATH
+
+INPUT_PATH = BASE_INPUT_PATH / 'problem054-poker'
+TEST_INPUT_PATH = BASE_INPUT_PATH / 'problem054-poker-test'
 
 
 class CardValue(IntEnum):
