@@ -1,6 +1,4 @@
-# Press ⌃R to execute it or replace it with your code.
-# from problems.problem51 import solve
-from problems.problem52 import solve
+from problems.problem052 import solve
 import time
 
 # Press the green button in the gutter to run the script.
